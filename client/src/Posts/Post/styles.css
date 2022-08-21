@@ -1,0 +1,88 @@
+.post-content-wrapper{
+    width: 450px;
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 16px;
+    margin: 25px auto;
+    margin-bottom: 30px;
+    border: 1px solid;
+    box-shadow: 5px 10px #3e3c3c;
+}
+
+.username-wrapper, .message-wrapper, .tags-wrapper, .tags{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 70px;
+}
+
+.username, .message, .tags{
+    background-color: rgb(213, 213, 213);
+}
+.tags{
+    height: 28px;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.post-content-wrapper label{
+    margin-right: 20px;
+    font-size: larger;
+}
+
+.username{
+    overflow: hidden;
+    width: 100%;
+    border-radius: 6px;
+    padding: 5px;
+}
+.message {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.tags-wrapper label {
+    margin-right: 6px;
+}
+.tags {
+    margin: 0;
+}
+
+.buttons-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+}
+
+.buttons-wrapper button {
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 8px;
+    padding: 10px 14px;
+    box-shadow: 4px 8px #888888;
+}
+
+.edit-button {
+    background-color: #4CAF50;
+}
+.delete-button{
+    background-color: #ed6a68;
+}
+button:active {
+    box-shadow: 2px 4px #888888;
+    position: relative;
+    top: 2px;
+    left: 2px;
+}

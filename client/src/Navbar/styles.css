@@ -1,0 +1,40 @@
+.nav-link-wrapper {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    padding: 0;
+    margin: 0 auto;
+    height: 60px;
+    align-items: center;
+    width: 60%;
+    max-width: 450px;
+}
+.nav-container {
+    align-items: center;
+    background-color: rgb(241, 125, 2);
+}
+
+body {
+    margin: 0;
+}
+
+.nav-container p {
+    font-size: xx-large;
+    margin: 12px;
+    
+}
+
+
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+
+
+a:active { text-decoration: none; }

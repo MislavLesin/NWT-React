@@ -2,7 +2,7 @@ POST http://localhost:5000/posts
 Content-Type: application/json
 
 {
-    "username":"Joeyxxx",
-    "message":"Joey@mail.com",
-    "tags":["tag1","tag2"]
+    "username":"Katka",
+    "message":"Mislaf@mail.com",
+    "tags":[]
 }
