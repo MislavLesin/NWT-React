@@ -30,7 +30,12 @@ function Post(props) {
       </div>
       <div className="buttons-wrapper">
         <button className="edit-button">EDIT</button>
-        <button className="delete-button">DELETE</button>
+        <button
+          className="delete-button"
+          onClick={(e) => props.deletePost(props._id, e)}
+        >
+          DELETE
+        </button>
       </div>
     </div>
   );

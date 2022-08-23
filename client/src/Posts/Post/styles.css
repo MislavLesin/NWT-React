@@ -1,13 +1,12 @@
 .post-content-wrapper{
     width: 450px;
-    margin-top: 20px;
+    height: 300px;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     padding: 16px;
     margin: 25px auto;
-    margin-bottom: 30px;
     border: 1px solid;
     box-shadow: 5px 10px #3e3c3c;
 }

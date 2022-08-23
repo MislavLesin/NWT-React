@@ -1,4 +1,5 @@
-import express from "express";
+import express, { response } from "express";
+import mongoose from "mongoose";
 import model from "../models/postModel.js";
 
 const router = express.Router();
@@ -29,6 +30,11 @@ router.post("/posts", (request, response) => {
     .catch((error) => {
       response.json(error.response.data);
     });
+});
+
+router.delete("/posts/:id", async (req, res) => {
+  await model.findByIdAndDelete(req.params.id);
+  res.json("Success");
 });
 
 export default router;

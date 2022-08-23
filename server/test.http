@@ -1,8 +1,6 @@
-POST http://localhost:5000/posts
+DELETE http://localhost:5000/kokolo/6304f9235c22fece6163cb64
 Content-Type: application/json
 
 {
-    "username":"Katka",
-    "message":"Mislaf@mail.com",
-    "tags":[]
+
 }
