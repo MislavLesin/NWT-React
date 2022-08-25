@@ -7,12 +7,16 @@ function CreatePost(props) {
   var [message, setMessage] = useState("");
   var [tags, setTags] = useState([]);
 
+  function SplitTags() {
+    if (!tags.length) return [];
+    else return tags.trim().split(/\s+/);
+  }
   const sendRequest = (event) => {
     event.preventDefault();
     const newPost = {
       username: username,
       message: message,
-      tags: tags.trim().split(/\s+/),
+      tags: SplitTags(),
     };
     axios
       .post("http://localhost:5000/posts", newPost)

@@ -2,12 +2,12 @@ import styles from "./styles.css";
 
 function Post(props) {
   function getTags() {
-    if (props.tags.length < 1) {
+    if (props.tags == null || !props.tags.length) {
       return <label>No tags</label>;
     } else {
-      return props.tags.map((tag) => {
+      return props.tags.map((tag, index) => {
         return (
-          <label className="tag" key={props._id + tag}>
+          <label className="tag" key={props._id + tag + index}>
             #{tag}
           </label>
         );
