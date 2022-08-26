@@ -37,4 +37,19 @@ router.delete("/posts/:id", async (req, res) => {
   res.json("Success");
 });
 
+router.put("/posts/:id", async (req, res) => {
+  await model.findOneAndUpdate(
+    { _id: req.params.id },
+    new model({
+      _id: req.params.id,
+      username: req.body.username,
+      message: req.body.message,
+      tags: req.body.tags,
+      date: new Date(),
+    }),
+    { new: true }
+  );
+  res.json("Success");
+});
+
 export default router;

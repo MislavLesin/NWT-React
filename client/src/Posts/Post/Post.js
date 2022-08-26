@@ -14,6 +14,9 @@ function Post(props) {
       });
     }
   }
+  function HandleEdit() {
+    props.editPost(props._id);
+  }
   return (
     <div className="post-content-wrapper">
       <div className="username-wrapper">
@@ -29,7 +32,9 @@ function Post(props) {
         <div className="tags">{getTags()}</div>
       </div>
       <div className="buttons-wrapper">
-        <button className="edit-button">EDIT</button>
+        <button className="edit-button" onClick={() => HandleEdit()}>
+          EDIT
+        </button>
         <button
           className="delete-button"
           onClick={(e) => props.deletePost(props._id, e)}
