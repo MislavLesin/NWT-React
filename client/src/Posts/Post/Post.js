@@ -1,17 +1,22 @@
 import styles from "./styles.css";
 
 function Post(props) {
+  function ConcatTags() {
+    let message = "";
+    props.tags.forEach((tag) => {
+      message += "#" + tag + " ";
+    });
+    return message;
+  }
   function getTags() {
     if (props.tags == null || !props.tags.length) {
       return <label>No tags</label>;
     } else {
-      return props.tags.map((tag, index) => {
-        return (
-          <label className="tag" key={props._id + tag + index}>
-            #{tag}
-          </label>
-        );
-      });
+      return (
+        <label className="tag" key={props._id + ConcatTags(props.tags)}>
+          {ConcatTags()}
+        </label>
+      );
     }
   }
   function HandleEdit() {

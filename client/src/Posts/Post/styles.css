@@ -9,6 +9,8 @@
     margin: 25px auto;
     border: 1px solid;
     box-shadow: 5px 10px #3e3c3c;
+    
+    background-color: rgba(255, 232, 232, 0.6);
 }
 
 .username-wrapper, .message-wrapper, .tags-wrapper, .tags{
@@ -19,7 +21,7 @@
     height: 70px;
 }
 
-.username, .message, .tags{
+.username, .message, .tags ,.create-username , .create-message, .create-tags{
     background-color: rgb(213, 213, 213);
 }
 .tags{
@@ -53,14 +55,14 @@
     margin: 0;
 }
 
-.buttons-wrapper {
+.buttons-wrapper , .create-buttons-wrapper{
     display: flex;
     justify-content: space-evenly;
     width: 100%;
     align-items: center;
 }
 
-.buttons-wrapper button {
+.buttons-wrapper button, .create-buttons-wrapper button, .create-buttons-wrapper input {
     border: none;
     color: white;
     text-align: center;
@@ -73,10 +75,10 @@
     box-shadow: 4px 8px #888888;
 }
 
-.edit-button {
+.edit-button , .save-button{
     background-color: #4CAF50;
 }
-.delete-button{
+.delete-button ,.cancel-button{
     background-color: #ed6a68;
 }
 button:active {

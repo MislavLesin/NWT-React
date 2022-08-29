@@ -1,4 +1,4 @@
-.create-post-content-wrapper {
+.create-post-content-wrapper{
     width: 450px;
     height: 300px;
     border-radius: 20px;
@@ -8,5 +8,29 @@
     padding: 16px;
     margin: 25px auto;
     border: 1px solid;
-    box-shadow: 5px 10px #434242;
+    box-shadow: 5px 10px #3e3c3c;
+    background-color: rgba(255, 232, 232, 0.6);
 } 
+
+.new-post-heading{
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.create-username-wrapper, .create-tags-wrapper {
+    width: 90%;
+    height: 24px;
+    align-items: center;
+}
+
+.create-username, .create-message , .create-tags{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding-left: 8px;
+}
+.create-message-wrapper {
+    width: 90%;
+    height: 52px;
+}
+

@@ -7,12 +7,18 @@ function CreatePost(props) {
   var [message, setMessage] = useState("");
   var [tags, setTags] = useState([]);
 
+  function OnCancelClick() {
+    setUsername("");
+    setMessage("");
+    setTags("");
+  }
   function SplitTags() {
     if (!tags.length) return [];
     else return tags.trim().split(/\s+/);
   }
   const sendRequest = (event) => {
     event.preventDefault();
+    if (message === "" || username === "") return null;
     const newPost = {
       username: username,
       message: message,
@@ -32,38 +38,38 @@ function CreatePost(props) {
   return (
     <form onSubmit={sendRequest} className="create-post-content-wrapper">
       <h2 className="new-post-heading">Create New Post</h2>
-      <div className="username-wrapper">
+      <div className="create-username-wrapper">
         <input
-          className="username"
+          className="create-username"
           type="text"
           placeholder="UserName"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         ></input>
       </div>
-      <div className="message-wrapper">
+      <div className="create-message-wrapper">
         <input
-          className="message"
+          className="create-message"
           type="text"
           placeholder="Message"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         ></input>
       </div>
-      <div className="tags-wrapper">
-        <div className="tags">
-          <input
-            className="tags"
-            type="text"
-            placeholder="tags"
-            onChange={(e) => setTags(e.target.value)}
-            value={tags}
-          ></input>
-        </div>
+      <div className="create-tags-wrapper">
+        <input
+          className="create-tags"
+          type="text"
+          placeholder="tags"
+          onChange={(e) => setTags(e.target.value)}
+          value={tags}
+        ></input>
       </div>
-      <div className="buttons-wrapper">
-        <input type="submit" value={"SAVE"} className="edit-button"></input>
-        <button className="delete-button">DELETE</button>
+      <div className="create-buttons-wrapper">
+        <input type="submit" value={"SAVE"} className="save-button"></input>
+        <button className="cancel-button" onClick={OnCancelClick}>
+          CANCEL
+        </button>
       </div>
     </form>
   );

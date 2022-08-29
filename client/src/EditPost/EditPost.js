@@ -1,4 +1,5 @@
 import { useState, useRef, useDebugValue, useEffect } from "react";
+import "./styles.css";
 function EditPost(props) {
   var [username, setUsername] = useState(props.data.username);
   var [message, setMessage] = useState(props.data.message);
@@ -31,39 +32,41 @@ function EditPost(props) {
   return (
     <form onSubmit={sendRequest} className="edit-post-content-wrapper">
       <h2 className="edit-post-heading">Edit Post</h2>
-      <div className="username-wrapper">
+      <div className="edit-username-wrapper">
         <input
-          className="username"
+          className="edit-username"
           type="text"
           placeholder="UserName"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         ></input>
       </div>
-      <div className="message-wrapper">
+      <div className="edit-message-wrapper">
         <input
-          className="message"
+          className="edit-message"
           type="text"
           placeholder="Message"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         ></input>
       </div>
-      <div className="tags-wrapper">
-        <div className="tags">
-          <input
-            className="tags"
-            type="text"
-            placeholder="tags"
-            onChange={(e) => setTags(e.target.value)}
-            value={tags}
-          ></input>
-        </div>
+      <div className="edit-tags-wrapper">
+        <input
+          className="edit-tags"
+          type="text"
+          placeholder="tags"
+          onChange={(e) => setTags(e.target.value)}
+          value={tags}
+        ></input>
       </div>
-      <div className="buttons-wrapper">
-        <input type="submit" value={"SAVE"} className="edit-button"></input>
+      <div className="edit-buttons-wrapper">
+        <input
+          type="submit"
+          value={"SAVE"}
+          className="edit-save-button"
+        ></input>
         <button
-          className="cancel-button"
+          className="edit-cancel-button"
           onClick={() => {
             props.setEditing(false);
           }}

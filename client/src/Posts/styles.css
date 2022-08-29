@@ -1,16 +1,8 @@
 .posts-content-wrapper{
     margin: 20px 5% 20px 5%;
-    border: 2px;
-    border-style: solid;
-    border-radius: 20px;
-    box-shadow: 5px 10px #3e3c3c;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 30px;
-}
-.post {
-    margin: 0 25px 0 25px;
-
 }

@@ -1,6 +1,6 @@
 import Post from "./Post/Post";
 import styles from "./styles.css";
-import React, { useState, useEffect, useInsertionEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CreatePost from "../CreatePost/CreatePost";
 import EditPost from "../EditPost/EditPost";
@@ -74,26 +74,28 @@ function Posts() {
     } else {
       return posts.map((post) => {
         return (
-          <div className="post" key={post._id}>
-            <Post
-              deletePost={DeletePost}
-              username={post.username}
-              message={post.message}
-              tags={post.tags}
-              _id={post._id}
-              editPost={EditingPost}
-            />
-          </div>
+          <Post
+            deletePost={DeletePost}
+            username={post.username}
+            message={post.message}
+            tags={post.tags}
+            _id={post._id}
+            editPost={EditingPost}
+            key={post._id}
+          />
         );
       });
     }
   }
 
   function EditingPost(id) {
-    postToEdit = posts.filter((post) => {
+    console.log("In posts function editingPost(id)");
+
+    postToEdit = posts.find((post) => {
       return post._id === id;
     });
-    setEditingPost(postToEdit[0]);
+    console.log(postToEdit);
+    setEditingPost(postToEdit);
     setEditing(true);
   }
 
@@ -106,6 +108,7 @@ function Posts() {
             updatePosts={RefreshPosts}
             setEditing={setEditing}
             ModifyEditingPost={ModifyEditingPost}
+            key={editingPost._id}
           />
           {MapPosts()}
         </div>
