@@ -1,5 +1,4 @@
-import express, { response } from "express";
-import mongoose from "mongoose";
+import express from "express";
 import model from "../models/postModel.js";
 
 const router = express.Router();

@@ -1,9 +1,9 @@
 import Post from "./Post/Post";
 import styles from "./styles.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import CreatePost from "../CreatePost/CreatePost";
 import EditPost from "../EditPost/EditPost";
+import { GetRequest, DeleteRequest, EditRequest } from "../API/api";
 
 function Posts() {
   var [posts, setPosts] = useState([]);
@@ -11,63 +11,43 @@ function Posts() {
   var [editingPost, setEditingPost] = useState({});
   const url = "http://localhost:5000/posts";
 
-  let postToEdit = {
-    username: "",
-    message: "",
-    tags: [],
-    _id: 0,
-    date: "",
-  };
-
   useEffect(() => {
-    axios
-      .get(url)
-      .then((res) => {
-        console.log(res.data);
-        setPosts(res.data);
-      })
-      .catch((error) => console.log(error));
+    GetRequest(setPosts);
   }, []);
 
   async function RefreshPosts() {
-    console.log("Refreshing posts..");
-    let updatedPosts = await axios
-      .get(url)
-      .then((res) => {
-        console.log(res.data);
-        setPosts(res.data);
-      })
-      .catch((error) => console.log(error));
+    GetRequest(setPosts);
   }
 
   async function DeletePost(id, e) {
     e.preventDefault();
-    await axios
-      .delete(`${url}/${id}`)
-      .then(console.log("Deleted post with id - " + id))
-      .then(
-        setPosts(
-          posts.filter(function (post) {
-            return post._id !== id;
-          })
-        )
+    await DeleteRequest(id).then(
+      setPosts(
+        posts.filter(function (post) {
+          return post._id !== id;
+        })
       )
-      .catch((error) => console.log(error));
+    );
   }
 
   async function ModifyEditingPost(_username, _message, _tags, id, _date) {
-    postToEdit.username = _username;
-    postToEdit.message = _message;
-    postToEdit.tags = _tags;
-    console.log(
-      await axios
-        .put(`${url}/${id}`, postToEdit)
-        .then(console.log("Updated post with id - " + id))
-        .catch((error) => console.log(error))
+    await EditRequest(
+      { ...editingPost, username: _username, message: _message, tags: _tags },
+      id
     );
     RefreshPosts();
     setEditing(false);
   }
+
+  function EditingPost(id) {
+    setEditingPost(
+      posts.find((post) => {
+        return post._id === id;
+      })
+    );
+    setEditing(true);
+  }
+
   function MapPosts() {
     if (posts.length < 1) {
       return null;
@@ -88,17 +68,6 @@ function Posts() {
     }
   }
 
-  function EditingPost(id) {
-    console.log("In posts function editingPost(id)");
-
-    postToEdit = posts.find((post) => {
-      return post._id === id;
-    });
-    console.log(postToEdit);
-    setEditingPost(postToEdit);
-    setEditing(true);
-  }
-
   function decideIfEditing() {
     if (editing) {
       return (
@@ -109,6 +78,7 @@ function Posts() {
             setEditing={setEditing}
             ModifyEditingPost={ModifyEditingPost}
             key={editingPost._id}
+            setEditingPost={setEditingPost}
           />
           {MapPosts()}
         </div>

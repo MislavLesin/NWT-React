@@ -22,6 +22,7 @@ function Post(props) {
   function HandleEdit() {
     props.editPost(props._id);
   }
+
   return (
     <div className="post-content-wrapper">
       <div className="username-wrapper">

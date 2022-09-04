@@ -1,6 +1,6 @@
 import styles from "./styles.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { CreateRequest } from "../API/api";
 
 function CreatePost(props) {
   var [username, setUsername] = useState("");
@@ -16,7 +16,7 @@ function CreatePost(props) {
     if (!tags.length) return [];
     else return tags.trim().split(/\s+/);
   }
-  const sendRequest = (event) => {
+  const sendRequest = async (event) => {
     event.preventDefault();
     if (message === "" || username === "") return null;
     const newPost = {
@@ -24,12 +24,8 @@ function CreatePost(props) {
       message: message,
       tags: SplitTags(),
     };
-    axios
-      .post("http://localhost:5000/posts", newPost)
-      .then((Response) => console.log(Response))
-      .then(() => props.updatePosts())
-      .catch((error) => console.log(error));
-
+    await CreateRequest(newPost);
+    props.updatePosts();
     setUsername("");
     setMessage("");
     setTags([]);

@@ -1,4 +1,4 @@
-import { useState, useRef, useDebugValue, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./styles.css";
 function EditPost(props) {
   var [username, setUsername] = useState(props.data.username);
@@ -17,8 +17,6 @@ function EditPost(props) {
     e.preventDefault();
     if (tags.length < 1) {
       setTags([]);
-    } else {
-      setTags(tags.toString().split(" "));
     }
     props.ModifyEditingPost(
       username,
@@ -55,7 +53,7 @@ function EditPost(props) {
           className="edit-tags"
           type="text"
           placeholder="tags"
-          onChange={(e) => setTags(e.target.value)}
+          onChange={(e) => setTags(e.target.value.toString().split(/[\s,]+/))}
           value={tags}
         ></input>
       </div>
